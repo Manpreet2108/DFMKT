@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataFactory Marketplace</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f5f7fb; color: #333; }
+    header { background-color: #003366; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header img { height: 50px; }
+    main { padding: 2rem; }
+    section { background: white; padding: 1.5rem; margin-bottom: 2rem; border-radius: 8px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    h2 { color: #003366; }
+    input, textarea, select, button { padding: 0.5rem; margin: 0.5rem 0; width: 100%; border-radius: 4px; border: 1px solid #ccc; }
+    button { background-color: #0066cc; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #004d99; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .card { background: #eef3f9; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .chatbox { height: 150px; overflow-y: auto; background: #f0f0f0; padding: 0.5rem; margin-bottom: 0.5rem; }
+    footer { text-align: center; padding: 1rem; background: #003366; color: white; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="assets/logo.png" alt="DataFactory Logo">
+    <h1>DataFactory Marketplace</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add Data Product</h2>
+      <input type="text" placeholder="Product Title">
+      <textarea placeholder="Product Description"></textarea>
+      <input type="text" placeholder="Product Owner">
+      <input type="text" placeholder="Refresh Cycle">
+      <input type="text" placeholder="Delivery Method">
+      <textarea placeholder="Source Connection Info (e.g. Denodo VDP, Databricks)"></textarea>
+      <textarea placeholder="Access Groups (comma separated)"></textarea>
+      <textarea placeholder="BI Tool Links (Tableau, Power BI, Denodo, Databricks)"></textarea>
+      <textarea placeholder="Data Attributes (JSON format: name, type, description, unique ID)"></textarea>
+      <input type="number" placeholder="Price ($/month)">
+      <button>Add Product</button>
+    </section>
+
+    <section>
+      <h2>Upload Data from Excel</h2>
+      <input type="file" accept=".xlsx">
+    </section>
+
+    <section>
+      <h2>Available Data Products</h2>
+      <div class="grid">
+        <div class="card">
+          <h3 contenteditable="true">Customer Insights</h3>
+          <p contenteditable="true">Description: Monthly updated data set with customer behavior clustering</p>
+          <p>Owner: <span contenteditable="true">Data Team</span></p>
+          <p>Refresh: <span contenteditable="true">Weekly</span></p>
+          <p>Delivery: <span contenteditable="true">API</span></p>
+          <p>Source: <span contenteditable="true">Databricks Unity Catalog</span></p>
+          <p>BI Tools: Tableau, Power BI</p>
+          <p>Access Groups: Marketing, Sales</p>
+          <p>Attributes: [{"name":"customer_id", "type":"string", "description":"Unique ID", "uniqueId":"cust_id"}]</p>
+          <p>Price: $<span contenteditable="true">99</span>/month</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Shopping Cart & Order History</h2>
+      <ul>
+        <li>Customer Insights - $99 <button>Remove</button></li>
+      </ul>
+      <h3>Order History</h3>
+      <ul>
+        <li>Sales Data - Ordered on 2025-07-01</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Compliance & Cost Editing</h2>
+      <textarea placeholder="Compliance Notes (GDPR, HIPAA, etc.)"></textarea>
+      <input type="number" placeholder="Edit Cost ($)">
+      <button>Save Changes</button>
+    </section>
+
+    <section>
+      <h2>Contact Information</h2>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea placeholder="Message"></textarea>
+      <button>Send</button>
+    </section>
+
+    <section>
+      <h2>Support Chatbot</h2>
+      <div class="chatbox" id="chatbox">
+        <div><strong>Bot:</strong> Hello! How can I assist you with your data needs today?</div>
+      </div>
+      <input type="text" id="chatInput" placeholder="Ask a question...">
+      <button onclick="sendChat()">Send</button>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DataFactory. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function sendChat() {
+      const input = document.getElementById("chatInput");
+      const chatbox = document.getElementById("chatbox");
+      const userMessage = input.value.trim();
+      if (userMessage) {
+        chatbox.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+        chatbox.innerHTML += `<div><strong>Bot:</strong> Thanks for reaching out! We'll help you with that shortly.</div>`;
+        input.value = "";
+        chatbox.scrollTop = chatbox.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
